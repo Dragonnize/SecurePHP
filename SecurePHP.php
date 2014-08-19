@@ -1,15 +1,11 @@
 <?php
 class SecurePHP
 {
-	public charset = 'UTF-8';
+	public $charset = 'UTF-8';
+	private $regex_pseudo = '#^[A-Za-z0-9]{3,15}$#';
+	private $regex_password = '#^[A-Za-z0-9]{6,30}$#';
 	
-	
-	function __construct(){	
-		if($min != null and $max != null){
-			if($min > strlen($variable) or $max < strlen($variable)){
-				return false;
-			}
-		}
+	function __construct(){
 	}
 	
 	
@@ -140,7 +136,7 @@ class SecurePHP
 	 * @return	bool
 	 */
 	public function pseudo($variable){
-		$syntaxe='#^[A-Za-z0-9]{3,15}$#';
+		$syntaxe = $this->regex_pseudo;
 		if(preg_match($syntaxe,$variable)){
 			return true;
 		}else{
@@ -157,7 +153,7 @@ class SecurePHP
 	 * @return	bool
 	 */
 	public function password($variable){
-		$syntaxe='#^[A-Za-z0-9]{6,30}$#';
+		$syntaxe = $this->regex_password;
 		if(preg_match($syntaxe,$variable)){
 			return true;  
 		}else{
